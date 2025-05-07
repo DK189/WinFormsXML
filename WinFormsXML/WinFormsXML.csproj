@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-windows;net472;</TargetFrameworks>
+		<UseWindowsForms>true</UseWindowsForms>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<!-- NuGet package information -->
+		<IsPackable>true</IsPackable>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Authors>DK189</Authors>
+		<Description>Design WinForms UI using XML markup — a lightweight UI processor for .NET Windows Forms.</Description>
+		<PackageProjectUrl>https://github.com/DK189/WinFormsXML</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/DK189/WinFormsXML.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>winforms</PackageTags>
+		<IncludeSymbols>False</IncludeSymbols>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>
