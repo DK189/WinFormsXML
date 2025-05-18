@@ -49,8 +49,14 @@
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -77,6 +83,10 @@
     <ProjectReference Include="..\..\WinFormsXML\WinFormsXML.csproj">
       <Project>{40646f43-e973-4358-82dc-4b41fef562a5}</Project>
       <Name>WinFormsXML</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinFormsControlLibrary1\WinFormsControlLibrary1.csproj">
+      <Project>{dd2e5a6b-b9ac-4fc8-b35a-598534e5f846}</Project>
+      <Name>WinFormsControlLibrary1</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

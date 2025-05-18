@@ -1,18 +1,39 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 /// <summary>
 /// This class provides extension methods for loading UI from XML files.
 /// </summary>
-public static class WinFormsXMLExtensions
+public static partial class WinFormsXMLExtensions
 {
-    public static void LoadUI(this System.Windows.Forms.Control control)
+
+}
+
+partial class WinFormsXMLExtensions
+{
+    static readonly ConditionalWeakTable<System.Windows.Forms.Control, object> ControlModels = new ConditionalWeakTable<System.Windows.Forms.Control, object>();
+
+    /// <summary>
+    /// Sets the model for the control.
+    /// </summary>
+    /// <param name="control"></param>
+    /// <param name="model"></param>
+    public static void Model(this System.Windows.Forms.Control control, object model)
     {
-        LoadUI(control, $"{control.GetType().Name}.xml");
+        ControlModels.Remove(control);
+        ControlModels.Add(control, model);
     }
 
-    public static void LoadUI(this System.Windows.Forms.Control control, string xmlFilePath)
+    /// <summary>
+    /// Gets the model for the control.
+    /// </summary>
+    /// <param name="control"></param>
+    /// <returns></returns>
+    public static object Model(this System.Windows.Forms.Control control)
     {
-        Debug.WriteLine($"Loading UI from {xmlFilePath} for control {control.Name}");
+        return ControlModels.TryGetValue(control, out var model) ? model : null;
     }
+
+
 }

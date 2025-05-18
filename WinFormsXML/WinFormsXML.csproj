@@ -1,10 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-windows;net472;</TargetFrameworks>
+		<LangVersion>13</LangVersion>
+		<Nullable>disable</Nullable>
+		<TargetFrameworks>net45;net46;net47;net48;net6.0-windows;net7.0-windows;net8.0-windows;net9.0-windows;</TargetFrameworks>
 		<UseWindowsForms>true</UseWindowsForms>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
+
+	<!-- Define constants for dotnet -->
+	<PropertyGroup Condition="$(TargetFramework.StartsWith('net6.0'))">
+		<DefineConstants>$(DefineConstants);DOTNET;DOTNET_6_0</DefineConstants>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="$(TargetFramework.StartsWith('net7.0'))">
+		<DefineConstants>$(DefineConstants);DOTNET;DOTNET_7_0</DefineConstants>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="$(TargetFramework.StartsWith('net8.0'))">
+		<DefineConstants>$(DefineConstants);DOTNET;DOTNET_8_0</DefineConstants>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="$(TargetFramework.StartsWith('net9.0'))">
+		<DefineConstants>$(DefineConstants);DOTNET;DOTNET_9_0</DefineConstants>
+	</PropertyGroup>
+	<!-- Define constants for dotnet -->
 
 	<PropertyGroup>
 		<!-- NuGet package information -->
@@ -19,6 +39,10 @@
 		<PackageTags>winforms</PackageTags>
 		<IncludeSymbols>False</IncludeSymbols>
 	</PropertyGroup>
+
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
+		<Reference Include="System.Design" />
+	</ItemGroup>
 	
 	<ItemGroup>
 		<None Include="..\README.md">
